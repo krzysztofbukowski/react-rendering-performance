@@ -2,7 +2,7 @@ import * as express from 'express';
 import {Express, NextFunction, Request, Response} from 'express';
 import * as ejs from 'ejs';
 
-const port = process.env.NODE_PORT || 3000;
+const port = process.env.NODE_PORT || 5000;
 const app: Express = express();
 
 app.set('views', './views');
