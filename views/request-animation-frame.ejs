@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>    
+        <script type="text/javascript">
+            window.addEventListener('DOMContentLoaded', (event) => {
+                console.log('DOM fully loaded and parsed', event.timeStamp);
+            });
+            const DummyComponent = (props) => React.createElement('div', null, `This is a dummy component #${props.id}`);
+            
+            const initReact = () => {
+                const elements = document.querySelectorAll('.react-component');
+
+                if (elements.length === 0) {
+                    window.requestAnimationFrame(initReact);
+                } else {
+                    elements.forEach((element) => {
+                        ReactDOM.render(
+                            React.createElement(DummyComponent, {
+                                id: element.dataset.id
+                            }),
+                            element
+                        )
+                    });
+                }
+            };
+
+            window.requestAnimationFrame(initReact);
+        </script>
+    </head>
+    <body>
+        <h1>Request animation frame performance test</h1>
+        <% data.forEach(function(data, index) { %>
+            <div id="component_<%=index %>" class="react-component" data-id="<%=index %>"></div>
+        <% }) %>                
+    </body>
+</html>
